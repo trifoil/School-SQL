@@ -21,3 +21,28 @@ groupe d'abord par élément de la column1 puis dans chaque groupe, groupe par l
 ```WHERE```
 ```JOIN```
 ```HAVING```
+
+## ```JOIN```
+
+### Mot-clé ```INNER JOIN```
+
+Selectionne tous les rows de chaque table tant que la condition est satisfaite.
+
+Le row ne sera pas selectionné si il est absent d'au moins une des deux tables
+
+### Mot-clé ```LEFT JOIN```
+
+Selectionne tous les rows de la table de gauche ainsi que tous les rows de la table de droite qui ont un match avec la colonne selectionnée de la table de gauche
+
+For the rows for which there is no matching row on the right side, the result-set will contain null. 
+
+### Mot-clé ```RIGHT JOIN```
+
+Selectionne tous les rows de la table de droite ainsi que tous les rows de la table de droite qui ont un match avec la colonne selectionnée de la table de gauche
+
+For the rows for which there is no matching row on the left side, the result-set will contain null.
+
+### Mot-clé ```INNER JOIN```
+
+creates the result-set by combining results of both LEFT JOIN and RIGHT JOIN. The result-set will contain all the rows from both tables. For the rows for which there is no matching, the result-set will contain NULL values.
+Full_Join

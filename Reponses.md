@@ -84,11 +84,11 @@ les données suivantes :
 
 1) Quel est le type de poste du poste ’p8’ ;
 ```
-
+SELECT poste.typePoste FROM `poste` WHERE nPoste = "p3"
 ```
 2) Quelles sont les noms des logiciels ’UNIX’ ;
 ```
-
+SELECT nomLog FROM `logiciel` WHERE typeLog = "UNIX"
 ```
 3) Donnez les noms, l’adresses IP, les numéros de salle des postes de type ’UNIX’ ou
 ’PCWS’ ;
