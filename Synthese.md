@@ -46,3 +46,7 @@ For the rows for which there is no matching row on the left side, the result-set
 
 creates the result-set by combining results of both LEFT JOIN and RIGHT JOIN. The result-set will contain all the rows from both tables. For the rows for which there is no matching, the result-set will contain NULL values.
 Full_Join
+
+
+## Mot-clé ```HAVING``` vs ```WHERE```
+
