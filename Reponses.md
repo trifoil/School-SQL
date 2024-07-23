@@ -93,28 +93,30 @@ SELECT nomLog FROM `logiciel` WHERE typeLog = "UNIX"
 3) Donnez les noms, l’adresses IP, les numéros de salle des postes de type ’UNIX’ ou
 ’PCWS’ ;
 ```
-
+SELECT nomPoste, indIP, ad, nSalle  FROM `poste` WHERE typePoste ="UNIX" OR typePoste = "PCWS"
+ 
 ```
 4) Même requête pour les postes du segment ’130.120.80’ triés par numéros de salles
 décroissants ;
 ```
-
 ```
 5) Donnez les numéros des logiciels installés sur le poste ’p6’ ;
 ```
-
+SELECT installer.nLog FROM installer WHERE nPoste = "p6"
 ```
 6) Donnez les numéros des postes qui hébergent le logiciel ’log1’.
 ``` 
-
+SELECT nPoste FROM installer WHERE nLog = 'log1'
 ```
 7) Donnez les noms et adresses IP complètes (ex : ’130.120.80.01’) des postes de type
 ’TX’ (utiliser la fonction de concaténation) ;
 ```
+SELECT nomPoste, CONCAT(indIP,'.',ad) FROM poste WHERE typePoste = 'TX'
 ```
 8) Donnez pour chaque poste, le nombre de logiciels installés sur celui-ci (en utilisant la
 table Installer) ;
 ```
+
 ```
 9) Donnez pour chaque salle, le nombre de postes dans celle-ci et classez-les par ordre
 croissant de nombre de poste (à partir de la table Poste) ;
@@ -132,41 +134,45 @@ différents ;
 ```
 13) Donnez les numéros des postes qui ont 2 logiciels installés ;
 ```
+SELECT nPoste FROM installer GROUP BY nPoste HAVING COUNT(nLog) = 2
 ```
-
+ou
+```
+SELECT COUNT(*) FROM(SELECT nPoste FROM Installer GROUP BY nPoste HAVING COUNT(nLog)=2);
+```
 ### Requête multitables et sous requêtes 
 
 Pour les requêtes 4,5,6 et 7 essayer de les résoudre de 3 manières différentes
 (produit cartésien, sous requêtes et avec le mot clé JOIN et ses dérivés)
 
-1) 
+1) Donnez les types de postes qui ne sont pas recensés dans le parc informatique (utiliser la table Types).
+```
+SELECT DISTINCT typeLP FROM types WHERE typeLP NOT IN (SELECT DISTINCT typePoste FROM poste)
+```
+2) Donnez les types existant à la fois comme types de postes et comme type de logiciels.
 ```
 
 ```
-2) 
+3) Donnez les types de postes de travail n’étant pas des types de logiciels.
 ```
 
 ```
-3) 
+4) Donnez les adresses IP complètes des postes qui hébergent le logiciel ’log6’.
 ```
 
 ```
-4)
+5) Donnez les adresses IP complètes des postes qui hébergent le logiciel de nom ’Oracle8’.
 ```
 
 ```
-5)
+6) Donnez les noms des segments qui possèdent exactement trois postes de travail de type ’TX’.
 ```
 
 ```
-6)
-```
-
-```
-7)
+7) Donnez les noms des salles où l’on peut trouver au moins un poste hébergeant le logiciel ’Oracle 6’.
 ```
 ```
-8)
+8) Installations (nom segment, nom salle, adresse IP complète, nom logiciel, date d’installation) triées par segment, salle et adresse IP.
 ```
 ```
 
